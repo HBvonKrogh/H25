@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingokort</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            width: 100px; /* Sett fast bredde */
+            height: 100px; /* Sett fast høyde */
+            position: relative; /* For å plassere krysset */
+            cursor: pointer; /* Endre musepekeren til en hånd */
+        }
+        .free {
+            background-color: lightgray;
+            font-weight: bold;
+        }
+        .cross::after {
+            content: "X";
+            color: red;
+            font-size: 2rem;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Hindrer at krysset kan klikkes */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Bingokort</h1>
+    <div id="bingo-container" style="text-align: center;"></div>
+
+    <script type="module">
+        import { generateCustomBingoCard } from './Bingo.mjs';
+
+        const customTexts = [
+            "Ny banerekord", "Hamilton tar en runde", "", "", "",
+            "", "", "", "Max kjører ut", "",
+            "", "", "", "", "",
+            "", "", "", "", "",
+            "", "", "", "", ""
+        ];
+
+        const bingoCard = generateCustomBingoCard(customTexts);
+
+        function displayBingoCard(card) {
+            const container = document.getElementById('bingo-container');
+            const table = document.createElement('table');
+            const headers = ["B", "I", "N", "G", "O"];
+
+            const headerRow = document.createElement('tr');
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            card.forEach((row, rowIndex) => {
+                const tr = document.createElement('tr');
+                row.forEach((cell, colIndex) => {
+                    const td = document.createElement('td');
+                    td.textContent = cell;
+                    if (rowIndex === 2 && colIndex === 2) {
+                        td.classList.add('free');
+                    }
+                    // Legg til klikkhendelse for å sette kryss
+                    td.addEventListener('click', () => {
+                        td.classList.toggle('cross');
+                    });
+                    tr.appendChild(td);
+                });
+                table.appendChild(tr);
+            });
+
+            container.appendChild(table);
+        }
+
+        displayBingoCard(bingoCard);
+    </script>
+</body>
+</html>

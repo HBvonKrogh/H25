@@ -1,0 +1,94 @@
+/* Bakgrunnsfarge og styling for profilbildet */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #63809e;  /* Bakgrunnsfarge */
+    padding: 30px;  /* Liten padding rundt bildet */
+    margin-top: 100px;  /* Avstand fra toppen */
+    margin-bottom: 100px;  /* Avstand fra bunnen */
+}
+
+.profile-container img {
+    width: 200px;  /* Størrelse på bildet */
+    height: 200px;  /* Størrelse på bildet */
+    object-fit: cover;  /* Sørger for at bildet fyller sirkelen uten å bli forvrengt */
+    border-radius: 50%; /* Gjør bildet rundt */
+}
+
+/* Sentrere og stilsette bildegalleriet */
+.carousel {
+    max-width: 800px; /* Juster bredden etter behov */
+    margin: auto; /* Sentrerer karusellen */
+    padding: 50px; /* Gir litt avstand rundt karusellen */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%; /* Holder knappene på samme sted */
+}
+
+.container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Styling for navigasjonsmeny */
+.navbar {
+    margin-bottom: 30px; /* Litt avstand under menyen */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Infobokser */
+.card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Fyller tilgjengelig plass */
+    max-width: 500px; /* Sett maksimal bredde */
+    height: auto; /* Høyden tilpasser seg innholdet */
+    margin: 10px; /* Gir litt avstand mellom boksene */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 18px;
+    flex: 1;
+    background-color: lightsteelblue;
+}
+
+/* Styling for footeren */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Sticky footer - sørg for at body og html dekker hele høyden */
+html, body {
+    height: 100%; /* Sørg for at body og html dekker hele høyden */
+    margin: 0; /* Fjern standard marginer fra body */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    font-family: 'Roboto', sans-serif;
+}
+main {
+    flex: 1; /* Lar main-ta plass i tilgjengelig området */
+}
